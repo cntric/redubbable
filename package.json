@@ -1,6 +1,6 @@
 {
   "name": "redubbable",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
