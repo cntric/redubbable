@@ -46,10 +46,9 @@ export const Redubbable : FC<RedubbableProps>  = ({
         (e.target as HTMLInputElement).focus();
         (e.target as HTMLInputElement).click();
         setRenaming(!isRenaming);
-        inputRef.current?.focus()
     }
 
-    const handleFocus = (e : React.FocusEvent<HTMLInputElement>) => [e.target.select(), inputRef.current?.focus()];
+    const handleFocus = (e : React.FocusEvent<HTMLInputElement>) =>e.target.select();
 
     const [ghostText, setGhostText] = useState(text||"");
 
@@ -59,7 +58,7 @@ export const Redubbable : FC<RedubbableProps>  = ({
 
         if(e.key === "Enter" && isRenaming){
             setRenaming(false);
-            onSubmit && onSubmit(prefix||"" + ghostText + suffix||"");
+            onSubmit && onSubmit(`${prefix||""}${breadCrumbSplit||""}${ghostText}${breadCrumbSplit||""}${suffix||""}`);
         }
 
         if(e.key === "Escape"){

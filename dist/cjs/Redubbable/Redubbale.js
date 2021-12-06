@@ -12,20 +12,18 @@ const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, t
     const [isRenaming, setRenaming] = (0, react_1.useState)(false);
     const handleClick = (e) => isRenaming ? e.stopPropagation() : undefined;
     const handleContextMenu = (e) => {
-        var _a;
         e.preventDefault();
         e.target.focus();
         e.target.click();
         setRenaming(!isRenaming);
-        (_a = inputRef.current) === null || _a === void 0 ? void 0 : _a.focus();
     };
-    const handleFocus = (e) => { var _a; return [e.target.select(), (_a = inputRef.current) === null || _a === void 0 ? void 0 : _a.focus()]; };
+    const handleFocus = (e) => e.target.select();
     const [ghostText, setGhostText] = (0, react_1.useState)(text || "");
     const handleChange = (e) => setGhostText(e.target.value);
     const onKeyDown = (e) => {
         if (e.key === "Enter" && isRenaming) {
             setRenaming(false);
-            onSubmit && onSubmit(prefix || "" + ghostText + suffix || "");
+            onSubmit && onSubmit(`${prefix || ""}${breadCrumbSplit || ""}${ghostText}${breadCrumbSplit || ""}${suffix || ""}`);
         }
         if (e.key === "Escape") {
             setRenaming(false);

@@ -13,15 +13,14 @@ export const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = 
         e.target.focus();
         e.target.click();
         setRenaming(!isRenaming);
-        inputRef.current?.focus();
     };
-    const handleFocus = (e) => [e.target.select(), inputRef.current?.focus()];
+    const handleFocus = (e) => e.target.select();
     const [ghostText, setGhostText] = useState(text || "");
     const handleChange = (e) => setGhostText(e.target.value);
     const onKeyDown = (e) => {
         if (e.key === "Enter" && isRenaming) {
             setRenaming(false);
-            onSubmit && onSubmit(prefix || "" + ghostText + suffix || "");
+            onSubmit && onSubmit(`${prefix || ""}${breadCrumbSplit || ""}${ghostText}${breadCrumbSplit || ""}${suffix || ""}`);
         }
         if (e.key === "Escape") {
             setRenaming(false);
