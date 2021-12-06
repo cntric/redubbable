@@ -1,7 +1,8 @@
 {
   "name": "redubbable",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "private": false,
+  "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
   "exports": {
