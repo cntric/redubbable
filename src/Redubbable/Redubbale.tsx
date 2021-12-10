@@ -35,6 +35,8 @@ export const Redubbable : FC<RedubbableProps>  = ({
     Divider
 }) =>{
 
+    console.log("Text received: ", text);
+
     const inputRef = useRef<HTMLInputElement>(null);
 
     const [isRenaming, setRenaming] = useState(false);
@@ -55,6 +57,8 @@ export const Redubbable : FC<RedubbableProps>  = ({
     const handleChange = (e : ChangeEvent<HTMLInputElement>)=>setGhostText((e.target as HTMLInputElement).value);
 
     const onKeyDown = (e : React.KeyboardEvent)=>{
+
+        console.log("Respond to...", e);
 
         if(e.key === "Enter" && isRenaming){
             setRenaming(false);
@@ -95,8 +99,7 @@ export const Redubbable : FC<RedubbableProps>  = ({
             <div style={{
                 position: "relative",
                 display: "flex",
-                alignItems: "center",
-                width: "100%"
+                alignItems: "center"
             }}>
                 {prefix && displayPrefix && 
                 perfixCrumbs}
@@ -109,7 +112,6 @@ export const Redubbable : FC<RedubbableProps>  = ({
                 onContextMenu={handleContextMenu} 
                 onChange={handleChange}
                 onKeyDown={onKeyDown}
-                onSubmit={()=>console.log("Hello!")}
                 disabled={!isRenaming}
                 autoFocus={isRenaming}
                 defaultValue={text}

@@ -8,6 +8,7 @@ const react_2 = require("react");
  * @description
  */
 const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, text, suffix, displaySuffix = true, onSubmit, breadCrumbSplit, Crumb, Divider }) => {
+    console.log("Text received: ", text);
     const inputRef = (0, react_2.useRef)(null);
     const [isRenaming, setRenaming] = (0, react_1.useState)(false);
     const handleClick = (e) => isRenaming ? e.stopPropagation() : undefined;
@@ -21,6 +22,7 @@ const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, t
     const [ghostText, setGhostText] = (0, react_1.useState)(text || "");
     const handleChange = (e) => setGhostText(e.target.value);
     const onKeyDown = (e) => {
+        console.log("Respond to...", e);
         if (e.key === "Enter" && isRenaming) {
             setRenaming(false);
             onSubmit && onSubmit(`${prefix || ""}${breadCrumbSplit || ""}${ghostText}${breadCrumbSplit || ""}${suffix || ""}`);
@@ -42,12 +44,11 @@ const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, t
         } }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ style: {
                 position: "relative",
                 display: "flex",
-                alignItems: "center",
-                width: "100%"
+                alignItems: "center"
             } }, { children: [prefix && displayPrefix &&
                     perfixCrumbs, (0, jsx_runtime_1.jsx)("input", { type: "text", ref: inputRef, style: isRenaming ?
                         dubbingStyle
-                        : staticStyle, onContextMenu: handleContextMenu, onChange: handleChange, onKeyDown: onKeyDown, onSubmit: () => console.log("Hello!"), disabled: !isRenaming, autoFocus: isRenaming, defaultValue: text, size: (ghostText ? ghostText.length : 0) }, void 0), suffix && displaySuffix &&
+                        : staticStyle, onContextMenu: handleContextMenu, onChange: handleChange, onKeyDown: onKeyDown, disabled: !isRenaming, autoFocus: isRenaming, defaultValue: text, size: (ghostText ? ghostText.length : 0) }, void 0), suffix && displaySuffix &&
                     suffixCrumbs] }), void 0) }), void 0));
 };
 exports.Redubbable = Redubbable;

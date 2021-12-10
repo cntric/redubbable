@@ -5,6 +5,7 @@ import { useRef } from 'react';
  * @description
  */
 export const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, text, suffix, displaySuffix = true, onSubmit, breadCrumbSplit, Crumb, Divider }) => {
+    console.log("Text received: ", text);
     const inputRef = useRef(null);
     const [isRenaming, setRenaming] = useState(false);
     const handleClick = (e) => isRenaming ? e.stopPropagation() : undefined;
@@ -18,6 +19,7 @@ export const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = 
     const [ghostText, setGhostText] = useState(text || "");
     const handleChange = (e) => setGhostText(e.target.value);
     const onKeyDown = (e) => {
+        console.log("Respond to...", e);
         if (e.key === "Enter" && isRenaming) {
             setRenaming(false);
             onSubmit && onSubmit(`${prefix || ""}${breadCrumbSplit || ""}${ghostText}${breadCrumbSplit || ""}${suffix || ""}`);
@@ -39,11 +41,10 @@ export const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = 
         }, children: _jsxs("div", { style: {
                 position: "relative",
                 display: "flex",
-                alignItems: "center",
-                width: "100%"
+                alignItems: "center"
             }, children: [prefix && displayPrefix &&
                     perfixCrumbs, _jsx("input", { type: "text", ref: inputRef, style: isRenaming ?
                         dubbingStyle
-                        : staticStyle, onContextMenu: handleContextMenu, onChange: handleChange, onKeyDown: onKeyDown, onSubmit: () => console.log("Hello!"), disabled: !isRenaming, autoFocus: isRenaming, defaultValue: text, size: (ghostText ? ghostText.length : 0) }, void 0), suffix && displaySuffix &&
+                        : staticStyle, onContextMenu: handleContextMenu, onChange: handleChange, onKeyDown: onKeyDown, disabled: !isRenaming, autoFocus: isRenaming, defaultValue: text, size: (ghostText ? ghostText.length : 0) }, void 0), suffix && displaySuffix &&
                     suffixCrumbs] }, void 0) }, void 0));
 };
