@@ -35,8 +35,6 @@ export const Redubbable : FC<RedubbableProps>  = ({
     Divider
 }) =>{
 
-    console.log("Text received: ", text);
-
     const inputRef = useRef<HTMLInputElement>(null);
 
     const [isRenaming, setRenaming] = useState(false);
@@ -58,7 +56,7 @@ export const Redubbable : FC<RedubbableProps>  = ({
 
     const onKeyDown = (e : React.KeyboardEvent)=>{
 
-        console.log("Respond to...", e);
+        console.log("Responding to...", e);
 
         if(e.key === "Enter" && isRenaming){
             setRenaming(false);

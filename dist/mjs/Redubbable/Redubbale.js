@@ -5,7 +5,6 @@ import { useRef } from 'react';
  * @description
  */
 export const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, text, suffix, displaySuffix = true, onSubmit, breadCrumbSplit, Crumb, Divider }) => {
-    console.log("Text received: ", text);
     const inputRef = useRef(null);
     const [isRenaming, setRenaming] = useState(false);
     const handleClick = (e) => isRenaming ? e.stopPropagation() : undefined;
@@ -19,7 +18,7 @@ export const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = 
     const [ghostText, setGhostText] = useState(text || "");
     const handleChange = (e) => setGhostText(e.target.value);
     const onKeyDown = (e) => {
-        console.log("Respond to...", e);
+        console.log("Responding to...", e);
         if (e.key === "Enter" && isRenaming) {
             setRenaming(false);
             onSubmit && onSubmit(`${prefix || ""}${breadCrumbSplit || ""}${ghostText}${breadCrumbSplit || ""}${suffix || ""}`);

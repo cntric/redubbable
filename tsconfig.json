@@ -3,6 +3,9 @@
   "compilerOptions": {
     "module": "esnext",
     "outDir": "dist/mjs",
-    "target": "esnext"
+    "target": "esnext",
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true
   }
 }

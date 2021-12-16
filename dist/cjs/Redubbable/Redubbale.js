@@ -8,7 +8,6 @@ const react_2 = require("react");
  * @description
  */
 const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, text, suffix, displaySuffix = true, onSubmit, breadCrumbSplit, Crumb, Divider }) => {
-    console.log("Text received: ", text);
     const inputRef = (0, react_2.useRef)(null);
     const [isRenaming, setRenaming] = (0, react_1.useState)(false);
     const handleClick = (e) => isRenaming ? e.stopPropagation() : undefined;
@@ -22,7 +21,7 @@ const Redubbable = ({ dubbingStyle, staticStyle, prefix, displayPrefix = true, t
     const [ghostText, setGhostText] = (0, react_1.useState)(text || "");
     const handleChange = (e) => setGhostText(e.target.value);
     const onKeyDown = (e) => {
-        console.log("Respond to...", e);
+        console.log("Responding to...", e);
         if (e.key === "Enter" && isRenaming) {
             setRenaming(false);
             onSubmit && onSubmit(`${prefix || ""}${breadCrumbSplit || ""}${ghostText}${breadCrumbSplit || ""}${suffix || ""}`);
